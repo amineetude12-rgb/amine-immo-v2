@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102239">
+  <meta name="description" content="Analyse de rentabilité immobilière à partir d'une annonce : rendement, prêt, cash-flow, scénarios et prix maximal.">
+  <title>Analyseur immobilier • Amine</title>
+  <style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;color:#14253a;background:#f5f6f4;font-synthesis:none}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.65}.app-shell{max-width:1100px;margin:auto;padding:0 26px 64px}.topbar{height:100px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dfe3e5}.brand{display:flex;gap:12px;align-items:center;font-size:18px;letter-spacing:.08em;line-height:1.1}.brand b{font-weight:900}.brand small{display:block;font-size:8px;font-weight:800;letter-spacing:.20em;color:#708093;margin-top:6px}.brand-icon{display:grid;place-items:center;background:#11263b;color:#e8f7db;font-family:Georgia,serif;font-size:25px;width:43px;height:43px;border-radius:12px}.release,.hint-chip{font-size:10px;letter-spacing:.13em;font-weight:800;border-radius:30px;padding:10px 13px;color:#526473;background:#e9eef0}.hero{padding:60px 0 48px}.eyebrow,.step{font-size:10px;letter-spacing:.18em;font-weight:850;color:#4b807a}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#63aa80;margin-right:7px}h1,h2,p{margin-top:0}h1{font-size:clamp(54px,8vw,96px);line-height:.98;letter-spacing:-.068em;margin:20px 0 22px;font-weight:750}h1 em{font-family:Georgia,serif;font-weight:400;color:#418577} .hero p{font-size:17px;max-width:580px;line-height:1.6;color:#637286}.panel{background:white;border:1px solid #e6e9e9;border-radius:22px;padding:30px;margin-bottom:18px;box-shadow:0 10px 35px #16283b04}.import-panel{border-color:#d0dfd9;box-shadow:0 6px 40px #2869570b}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:25px}.section-heading h2{font-size:26px;letter-spacing:-.045em;margin:8px 0 0}.icon-disc{display:grid;place-items:center;width:38px;height:38px;border:1px solid #e1e9e7;border-radius:50%;font-size:20px;color:#4e9684}label{display:block;font-size:12px;font-weight:750;color:#526477;margin-bottom:9px}.input-with-button{display:flex;gap:8px}.input-with-button input{flex:1;min-width:0}input,textarea,select{border:1px solid #d9e0e4;background:#fbfcfc;color:#172c3e;border-radius:11px;padding:14px 13px;outline:none;width:100%;transition:.15s;min-height:45px}textarea{resize:vertical;line-height:1.55}input:focus,textarea:focus,select:focus{border-color:#4e9383;box-shadow:0 0 0 3px #4e93831c}.primary{background:#12364a;border:1px solid #12364a;color:white;border-radius:11px;font-weight:750;padding:14px 19px;white-space:nowrap}.primary:hover{background:#1b5064}.secondary{background:#f6f8f7;border:1px solid #dfe8e4;color:#1d4a4b;border-radius:11px;padding:12px 16px;font-size:12px;font-weight:750}.secondary:hover{background:#eaf1ee}.support-hint,.tiny{font-size:11px;color:#8a98a5;line-height:1.6;margin:10px 0 0}.callout{margin-top:15px;padding:13px 15px;border-radius:10px;background:#eef5f0;border:1px solid #dceae2;font-size:12px;color:#23564f;line-height:1.6}.callout.warning{background:#fff5ea;border-color:#f3e3c8;color:#82512a}.alt-methods{margin-top:24px;border-top:1px solid #e5eaea;padding-top:18px}.alt-methods summary{cursor:pointer;color:#2b5e58;font-size:13px;font-weight:800}.alt-methods summary span{font-size:10px;font-weight:500;color:#899898;margin-left:8px}.details-inner{padding-top:20px;display:grid;gap:12px}.details-inner p{font-size:12px;line-height:1.6;color:#57697c;margin:0}.action-pair{display:flex;flex-wrap:wrap;gap:9px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.field{min-width:0}.field-label{display:flex;gap:7px;align-items:baseline;justify-content:space-between;margin-bottom:8px}.field-label label{margin:0}.field .provenance{font-size:9px;color:#839391;white-space:nowrap}.field .provenance.extracted{color:#227a5a;font-weight:800}.field .provenance.assumed{color:#ab7a43}.field input{font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}.field .unit{font-size:10px;color:#82949b;margin-top:5px}.data-note{color:#84939c;font-size:11px;line-height:1.7;border-top:1px dashed #e5e9e8;margin-top:22px;padding-top:15px}.results{background:#12273b;color:white;border-radius:23px;padding:32px;margin:30px 0 18px}.results-top h2{font-size:clamp(29px,4vw,43px);letter-spacing:-.05em;margin:10px 0}.results-top p{font-size:13px;color:#a8b9c6;line-height:1.6}.light{color:#9cd4c0}.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:28px 0}.kpi{border:1px solid #314658;background:#1b3246;border-radius:14px;padding:20px 15px;min-width:0}.primary-kpi{border-color:#3e9384;background:#1b564f}.kpi>span:first-child{display:block;font-size:12px;font-weight:650;color:#bfced3;min-height:27px}.kpi small{font-size:9px;color:#a2c0bc}.kpi strong{display:block;font-weight:780;letter-spacing:-.045em;font-size:clamp(23px,3vw,34px);margin:13px 0 7px;overflow-wrap:anywhere;white-space:nowrap}.kpi-info{font-size:10px;color:#9bb0bd}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.detail-card,.scenarios{border:1px solid #344a5c;border-radius:14px;padding:20px;background:#192f43}.detail-heading{font-size:14px;font-weight:800;margin-bottom:16px}.detail-heading span{float:right;color:#9bacb9;font-size:11px;font-weight:400}.line{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#bdcbd5;border-bottom:1px solid #31475b;padding:9px 0}.line:last-child{border-bottom:0}.line b{color:white;font-variant-numeric:tabular-nums;text-align:right}.scenarios{margin-top:15px}.scenario-line{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid #31475b;font-size:12px;color:#c6d5dc}.scenario-line:last-child{border:0}.scenario-line b{font-size:15px}.pos{color:#9ce0b8!important}.neg{color:#ffc9ae!important}.advice-panel #alert-list{display:grid;gap:9px}.notice{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid #e4e9e6;background:#f8faf8;border-radius:10px;color:#5b6e78;line-height:1.6;font-size:12px}.notice .notice-dot{font-weight:900;color:#a97945}.notice.red{border-color:#f1d5c6;background:#fef5f1;color:#874b32}.notice.green{border-color:#d4ebde;background:#f2faf5;color:#286b50}.source-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;font-size:11px}.source-links a{color:#3b8775}.export-bar{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.history-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #e5e9e9;padding:12px 0}.history-row:last-child{border:0}.history-row button,.small-link{border:0;background:transparent;color:#3f897b;text-decoration:underline;font-size:11px;cursor:pointer}.history-row strong{display:block;font-size:13px}.history-row small{display:block;color:#8d9ba2;font-size:10px;padding-top:4px}.history-row .cash{font-weight:800;font-size:15px}footer{font-size:10px;color:#95a1a5;line-height:1.8;text-align:center;margin-top:25px}body.printing .alt-methods,body.printing .export-bar{display:none} @media(max-width:800px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-grid{grid-template-columns:1fr}}@media(max-width:530px){.app-shell{padding:0 14px 50px}.topbar{height:76px}.brand{font-size:14px}.brand-icon{width:38px;height:38px}.release{font-size:8px;padding:8px}.hero{padding:38px 5px 30px}h1{font-size:56px}.hero p{font-size:14px}.panel{padding:21px 17px;border-radius:17px}.section-heading h2{font-size:21px}.form-grid{gap:14px 10px}.field-label{display:block}.field .provenance{display:block;padding-top:4px}.input-with-button{display:grid;grid-template-columns:1fr}.input-with-button input{width:100%}.input-with-button button{width:100%}.results{padding:24px 15px;border-radius:17px}.kpi-grid{gap:9px}.kpi{padding:15px 11px}.kpi strong{font-size:25px}.detail-card,.scenarios{padding:16px}.export-bar button{flex:1}.hint-chip{font-size:8px;letter-spacing:0;padding:8px}}@media print{@page{size:A4;margin:14mm}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.app-shell{max-width:100%;padding:0}.hero,.import-panel,.export-bar,.history-panel,.alt-methods,footer{display:none}.topbar{height:auto;padding-bottom:15px;margin-bottom:15px}.panel{box-shadow:none;padding:16px;margin-bottom:10px;break-inside:avoid}.results{break-inside:avoid;margin:10px 0;padding:20px}.results-top h2{font-size:26px}.kpi strong{font-size:22px}.section-heading h2{font-size:19px}.notice{padding:7px}.form-grid{gap:9px}.field input{padding:7px;height:33px;min-height:33px}.data-note{margin-top:7px;padding-top:6px}}
+
+</style>
+  
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">A</span><span>AMINE <b>IMMO</b><small>ANALYSEUR DE RENTABILITÉ</small></span></div>
+    <span class="release">VERSION 2.0</span>
+  </header>
+  <main>
+    <section class="hero"><div class="eyebrow"><span class="dot"></span> INVESTISSEMENT LOCATIF · FRANCE</div><h1>Un lien.<br><em>Une décision.</em></h1><p>Importe une annonce, ajuste tes hypothèses, et découvre immédiatement si le bien tient la route.</p></section>
+    <section class="panel import-panel" aria-labelledby="import-title">
+      <div class="section-heading"><div><span class="step">01 / IMPORTATION</span><h2 id="import-title">L'annonce immobilière</h2></div><span class="icon-disc">↗</span></div>
+      <form id="import-form"><label for="ad-url">Lien de l'annonce</label><div class="input-with-button"><input id="ad-url" type="url" placeholder="https://www.leboncoin.fr/ad/..." autocomplete="url" aria-describedby="site-hint"><button type="submit" id="import-btn" class="primary">Importer <span aria-hidden="true">→</span></button></div></form>
+      <p class="support-hint" id="site-hint">Leboncoin, SeLoger, Bien’ici, PAP, agences et autres sites accessibles publiquement.</p>
+      <div class="callout" id="import-status" role="status" aria-live="polite" hidden></div>
+      <details class="alt-methods"><summary>Si le site bloque l'importation <span>3 solutions de secours</span></summary>
+        <div class="details-inner"><p><strong>Option A — Safari :</strong> ouvre l'annonce, puis utilise le signet ou le raccourci « Analyser l'annonce ». Il lit la page déjà ouverte.</p>
+          <div class="action-pair"><button type="button" class="secondary" id="copy-bookmarklet">Copier le code du signet Safari</button><button type="button" class="secondary" id="copy-shortcut">Copier le script Raccourcis iPhone</button></div>
+          <p class="tiny">Ces boutons produisent un code configuré pour l'adresse de cette application. Ils sont utilisables après publication de l'application en HTTPS.</p>
+          <label for="pasted-text">Option B — Coller la description de l'annonce</label><textarea id="pasted-text" rows="4" placeholder="Prix : 175 000 €\nSurface : 38 m²\nVille : Romainville\nDPE : D\nTaxe foncière : 950 €"></textarea><button type="button" class="secondary" id="parse-text">Extraire le texte</button>
+          <label for="screenshots">Option C — Jusqu'à 6 captures d’écran (OCR)</label><input id="screenshots" type="file" accept="image/jpeg,image/png,image/webp" multiple><button type="button" id="parse-screenshots" class="secondary">Lire les captures</button><p class="tiny">OCR disponible si l'hébergement dispose de Tesseract ; sinon, utilise la fonction « Texte en direct » de l'iPhone.</p>
+        </div>
+      </details>
+    </section>
+    <section class="panel" id="property-panel" aria-labelledby="property-title"><div class="section-heading"><div><span class="step">02 / LE BIEN</span><h2 id="property-title">Données de l'annonce</h2></div><span class="hint-chip">Modifiables</span></div><div class="form-grid" id="property-fields"></div><div class="data-note">Les champs <b>Extrait</b> proviennent de l'annonce. Les autres sont des hypothèses ou restent à confirmer. L'extraction n'est jamais considérée comme une preuve juridique.</div></section>
+    <section class="panel" aria-labelledby="finance-title"><div class="section-heading"><div><span class="step">03 / LE FINANCEMENT</span><h2 id="finance-title">Ton montage financier</h2></div><span class="hint-chip">Réglages libres</span></div><div class="form-grid" id="finance-fields"></div></section>
+    <section class="panel" aria-labelledby="rent-title"><div class="section-heading"><div><span class="step">04 / LES CHARGES</span><h2 id="rent-title">Exploitation locative</h2></div><span class="hint-chip">Montants annuels sauf mention</span></div><div class="form-grid" id="cost-fields"></div><p class="data-note">Les charges totales de copropriété ne sont <strong>pas</strong> assimilées aux charges non récupérables. Saisis séparément la part restant à la charge du bailleur.</p></section>
+    <section class="results" id="results" aria-labelledby="results-title"><div class="results-top"><span class="step light">05 / ANALYSE FINANCIÈRE</span><h2 id="results-title">Les chiffres qui comptent.</h2><p id="results-sub">Renseigne le prix et le loyer hors charges pour activer tous les indicateurs.</p></div>
+      <div class="kpi-grid"><div class="kpi primary-kpi"><span>Cash-flow mensuel <small>avant impôt</small></span><strong id="kpi-cash">—</strong><span class="kpi-info" id="cash-info">Après charges et remboursement</span></div><div class="kpi"><span>Rentabilité brute</span><strong id="kpi-gross">—</strong><span class="kpi-info">Sur coût total du projet</span></div><div class="kpi"><span>Rentabilité nette</span><strong id="kpi-net">—</strong><span class="kpi-info">Avant financement & impôt</span></div><div class="kpi"><span>Mensualité crédit</span><strong id="kpi-debt">—</strong><span class="kpi-info">Assurance comprise</span></div></div>
+      <div class="detail-grid"><div class="detail-card"><div class="detail-heading">Synthèse de l'opération</div><div id="breakdown"></div></div><div class="detail-card"><div class="detail-heading">Seuils de décision</div><div id="thresholds"></div></div></div>
+      <div class="scenarios"><div class="detail-heading">Tests de résistance <span>cash-flow / mois</span></div><div id="scenario-list"></div></div>
+    </section>
+    <section class="panel advice-panel"><div class="section-heading"><div><span class="step">06 / VÉRIFICATIONS</span><h2>Points de vigilance</h2></div><span class="icon-disc">!</span></div><div id="alert-list"></div><div class="source-links"><a href="https://www.service-public.fr/particuliers/actualites/A14608" target="_blank" rel="noopener">Règles DPE ↗</a><a href="https://www.service-public.fr/particuliers/vosdroits/F36219" target="_blank" rel="noopener">Encadrement Est Ensemble ↗</a></div></section>
+    <section class="export-bar"><button type="button" class="primary" id="save-analysis">Sauvegarder cette analyse</button><button type="button" class="secondary" id="download-json">Exporter JSON</button><button type="button" class="secondary" id="print-report">Imprimer / PDF</button></section>
+    <section class="panel history-panel"><div class="section-heading"><div><span class="step">MES ANALYSES</span><h2>Historique local</h2></div><button type="button" class="small-link" id="clear-history">Effacer</button></div><div id="history"></div></section>
+    <footer>Analyseur immobilier V2 · Données locales dans ce navigateur · Résultats avant impôt sur le revenu, hors plus-value et revente. Vérifie toute hypothèse avant achat.</footer>
+  </main>
+</div>
+<script>
+'use strict';
+const $ = x => document.getElementById(x);
+const VKEY='amine-immo-v2-draft', HKEY='amine-immo-v2-history';
+const DEFAULTS={price:null,surface:null,city:'',postal_code:'',rooms:null,dpe:'',copro_total:null,property_tax:null,rent_monthly:null,down_payment:10000,notary_pct:8,works:0,furniture:3000,bank_fees:2500,years:25,interest_pct:3.4,insurance_pct:.2,copro_nonrecoverable:null,pno:120,accounting:0,cfe:0,other_charges:0,management_pct:0,maintenance_pct:5,vacancy_pct:4};
+let values={...DEFAULTS}, evidence={}, lastWarnings=[], sourceUrl='', lastMethod='';
+try { const saved=JSON.parse(localStorage.getItem(VKEY)||'null'); if(saved?.values){values={...DEFAULTS,...saved.values};evidence=saved.evidence||{};sourceUrl=saved.sourceUrl||'';}}catch(e){}
+const property=[
+  ['price','Prix affiché','€','number'],['surface','Surface','m²','number'],['city','Ville','','text'],['postal_code','Code postal','','text'],
+  ['rooms','Nombre de pièces','','number'],['dpe','Classe DPE','','dpe'],['copro_total','Charges copro totales','€/an','number'],
+  ['property_tax','Taxe foncière','€/an','number'],['rent_monthly','Loyer visé HC','€/mois','number']
+];
+const financing=[
+  ['down_payment','Apport personnel','€','number'],['notary_pct','Frais acquisition','% du prix','number'],['works','Budget travaux','€','number'],
+  ['furniture','Ameublement','€','number'],['bank_fees','Garantie + dossier','€','number'],['years','Durée du prêt','années','number'],
+  ['interest_pct','Taux nominal','% / an','number'],['insurance_pct','Assurance emprunteur','% du capital initial / an','number']
+];
+const costs=[
+  ['copro_nonrecoverable','Charges copro non récupérables','€/an','number'],['pno','Assurance PNO','€/an','number'],
+  ['accounting','Comptabilité','€/an','number'],['cfe','CFE (si applicable)','€/an','number'],
+  ['other_charges','Autres charges bailleur','€/an','number'],['vacancy_pct','Vacance / impayés','% des loyers','number'],
+  ['management_pct','Gestion locative','% loyers encaissés','number'],['maintenance_pct','Entretien / réserve','% loyers encaissés','number']
+];
+const num=x=>{let n=typeof x==='string'?Number(x.replace(/\s/g,'').replace(',','.')):Number(x);return Number.isFinite(n)?n:0;};
+const money=x=>x===null||x===undefined?'—':new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(x);
+const decimalMoney=x=>x===null||x===undefined?'—':new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(x);
+const pct=x=>x===null||x===undefined?'—':new Intl.NumberFormat('fr-FR',{maximumFractionDigits:2}).format(x)+' %';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function makeField(spec){const [key,label,unit,type]=spec, wrapper=document.createElement('div'); wrapper.className='field';
+ const status=evidence[key] ? (evidence[key].confidence==='à confirmer'?'À confirmer':'Extrait') : (values[key]===null||values[key]===''?'Inconnu':'Hypothèse');
+ let control= type==='dpe' ? `<select id="fld-${key}" data-field="${key}"><option value="">Inconnu</option>${'ABCDEFG'.split('').map(x=>`<option value="${x}" ${values[key]===x?'selected':''}>${x}</option>`).join('')}</select>`
+ : `<input id="fld-${key}" data-field="${key}" type="${type==='number'?'number':'text'}" ${type==='number'?'min="0" step="any" inputmode="decimal"':''} value="${esc(values[key]??'')}" placeholder="${type==='number'?'À renseigner':'—'}">`;
+ wrapper.innerHTML=`<div class="field-label"><label for="fld-${key}">${label}</label><span class="provenance ${evidence[key]?'extracted':(status==='Hypothèse'?'assumed':'')}">${status}</span></div>${control}${unit?`<div class="unit">${unit}</div>`:''}`;
+ wrapper.querySelector('[data-field]').addEventListener('input',e=>{
+   let x=e.target.value; values[key]=type==='number'?(x===''?null:num(x)):x;
+   delete evidence[key]; const span=wrapper.querySelector('.provenance');span.textContent=x===''?'Inconnu':'Saisi';span.className='provenance';
+   persist();render();
+ });return wrapper;}
+function fields(){[['property-fields',property],['finance-fields',financing],['cost-fields',costs]].forEach(([id,arr])=>{$(id).replaceChildren(...arr.map(makeField));});}
+function payment(loan,rate,years){if(loan<=0)return 0;const r=rate/1200,n=Math.max(1,Math.round(years*12));return !r?loan/n:loan*r/(1-Math.pow(1+r,-n));}
+function calculate(v, rentFactor=1, rateExtra=0, vacancyOverride=null){
+ const price=Math.max(0,num(v.price)), rent=Math.max(0,num(v.rent_monthly))*rentFactor;
+ const notary=Math.max(0,num(v.notary_pct))/100;
+ const total=price*(1+notary)+num(v.bank_fees)+num(v.works)+num(v.furniture);
+ const loan=Math.max(0,total-num(v.down_payment));
+ const r=Math.max(0,num(v.interest_pct)+rateExtra),years=Math.max(1,num(v.years));
+ const insurance=loan*num(v.insurance_pct)/1200;
+ const debt=payment(loan,r,years)+insurance;
+ const vac=vacancyOverride===null?num(v.vacancy_pct)/100:vacancyOverride;
+ const collected=rent*12*(1-Math.min(1,Math.max(0,vac)));
+ const management=num(v.management_pct)/100,maintenance=num(v.maintenance_pct)/100;
+ const fixed=['copro_nonrecoverable','property_tax','pno','accounting','cfe','other_charges'].reduce((s,k)=>s+Math.max(0,num(v[k])),0);
+ const op= fixed + collected*(management+maintenance);
+ const noi=collected-op, cf=noi/12-debt;
+ const coeff=12*(1-vac)*(1-management-maintenance);
+ const breakeven=coeff>0?(fixed+debt*12)/coeff:null;
+ let maxPrice=null;
+ if(coeff>0&&rent>0){const room=(rent*coeff-fixed)/12;if(room>=0){const perEuro=payment(1,r,years)+num(v.insurance_pct)/1200;const maxLoan=perEuro>0?room/perEuro:0;
+ maxPrice=Math.max(0,(maxLoan+num(v.down_payment)-num(v.bank_fees)-num(v.works)-num(v.furniture))/(1+notary));}}
+ return {price,rent,total,loan,insurance,debt,collected,op,noi,cf,
+  gross:total&&rent?rent*1200/total:null,net:total&&rent?noi*100/total:null,breakeven,maxPrice};
+}
+function line(label,value){return `<div class="line"><span>${esc(label)}</span><b>${esc(value)}</b></div>`;}
+function status(txt,isWarning=false){const e=$('import-status');e.hidden=false;e.className='callout'+(isWarning?' warning':'');e.textContent=txt;}
+function render(){const c=calculate(values),ready=!!values.price&&!!values.rent_monthly;
+ $('kpi-cash').textContent=ready?money(c.cf):'—';$('kpi-cash').className=ready?(c.cf>=0?'pos':'neg'):'';
+ $('kpi-gross').textContent=ready?pct(c.gross):'—';$('kpi-net').textContent=ready?pct(c.net):'—';$('kpi-debt').textContent=values.price?money(c.debt):'—';
+ $('results-sub').textContent=ready?'Estimation avant impôt sur le revenu, sur la base de tes hypothèses.':'Renseigne le prix et le loyer hors charges pour activer tous les indicateurs.';
+ $('cash-info').textContent=ready?(c.cf<0?'Effort d’épargne '+money(-c.cf)+'/mois':'Excédent mensuel estimé'):'Après charges et remboursement';
+ $('breakdown').innerHTML=line('Coût complet du projet',values.price?money(c.total):'—')+line('Apport',money(num(values.down_payment)))+line('Capital emprunté',values.price?money(c.loan):'—')+line('Mensualité hors assurance',values.price?money(c.debt-c.insurance):'—')+line('Assurance emprunteur / mois',values.price?decimalMoney(c.insurance):'—')+line('Revenus encaissés / an',values.rent_monthly?money(c.collected):'—')+line('Charges d’exploitation / an',money(c.op))+line('Résultat exploitation / an',ready?money(c.noi):'—');
+ $('thresholds').innerHTML=line('Loyer d’équilibre HC / mois',values.price?money(c.breakeven):'—')+line('Prix d’achat maximal pour CF ≥ 0',ready?money(c.maxPrice):'—')+line('Effort d’épargne / mois',ready?money(Math.max(0,-c.cf)):'—')+line('Prix au m²',values.price&&values.surface?money(c.price/num(values.surface)):'—')+line('Rentabilité calculée sur','Coût total (frais inclus)');
+ $('scenario-list').innerHTML=ready?[
+  ['Situation actuelle',c.cf],['Loyer −10 %',calculate(values,.9).cf],['Taux du crédit +1 point',calculate(values,1,1).cf],['Vacance 1 mois minimum',calculate(values,1,0,Math.max(num(values.vacancy_pct)/100,1/12)).cf]
+ ].map(([label,cf])=>`<div class="scenario-line"><span>${esc(label)}</span><b class="${cf>=0?'pos':'neg'}">${esc(money(cf))}</b></div>`).join(''):'<p class="support-hint">Les scénarios apparaîtront après saisie du loyer.</p>';
+ const notices=[];const push=(text,kind='')=>notices.push(`<div class="notice ${kind}"><span class="notice-dot">${kind==='green'?'✓':'!'}</span><span>${esc(text)}</span></div>`);
+ if(!values.price)push('Prix d’achat non renseigné : calcul financier incomplet.');
+ if(!values.rent_monthly)push('Loyer HC manquant : aucun loyer fictif n’est inventé. Vérifie le loyer autorisé et de marché.');
+ if(values.property_tax===null)push('Taxe foncière non confirmée : le calcul utilise provisoirement 0 €. Demander l’avis de taxe foncière.');
+ if(values.copro_nonrecoverable===null)push('Part non récupérable des charges de copropriété non renseignée : résultat optimiste tant que cette donnée manque.');
+ if(values.copro_total!==null)push('Charges totales annoncées '+money(num(values.copro_total))+'/an : ne pas déduire intégralement cette somme si une part est récupérable.');
+ if(!values.dpe)push('DPE absent : demander le diagnostic complet et le programme de travaux.');
+ if(values.dpe==='G')push('DPE G : en métropole, les logements G ne répondent plus au critère énergétique de décence pour les baux concernés depuis 2025. Vérifier travaux et exceptions.', 'red');
+ if(values.dpe==='F')push('DPE F : échéance d’exclusion locative prévue en 2028 pour les baux concernés en métropole ; anticiper le coût des travaux.', 'red');
+ if(values.dpe==='E')push('DPE E : anticiper l’échéance réglementaire prévue pour 2034 en métropole.');
+ if(/montreuil|romainville|noisy.le.sec|les lilas|pantin|bagnolet|bondy|bobigny|pré.saint.gervais|pre.saint.gervais/i.test(String(values.city)))push('Territoire Est Ensemble : le loyer peut être encadré. Vérifier la référence applicable à la date du bail (meublé/vide, époque de construction, nombre de pièces).');
+ if(num(values.price)>200000)push('Prix d’annonce supérieur à 200 000 € : dépasse le plafond de recherche initial du projet.');
+ if(ready&&c.cf<-100)push('Cash-flow négatif supérieur à 100 €/mois dans les hypothèses actuelles : recalculer le prix d’achat et les charges.','red');
+ if(ready&&c.cf>=0)push('Cash-flow estimé positif avant impôts, sous réserve de confirmer le loyer, les charges et les travaux.','green');
+ lastWarnings.forEach(w=>push(w));
+ $('alert-list').innerHTML=notices.join('');
+}
+function persist(){try{localStorage.setItem(VKEY,JSON.stringify({values,evidence,sourceUrl}));}catch(e){}}
+function applyExtract(response){let found=0;const obj=response.fields||{};for(const [k,v] of Object.entries(obj)){
+  if(!(k in DEFAULTS))continue;
+  if(k==='rent_monthly'&&values.rent_monthly!==null){continue;} // Ne jamais écraser un loyer confirmé.
+  values[k]=v;
+  evidence[k]=response.evidence?.[k]||{source:response.method,confidence:'à confirmer'};
+  found++;
+ } sourceUrl=response.source_url||sourceUrl;lastMethod=response.method||'';lastWarnings=(response.warnings||[]).slice(0,8);
+ fields();render();persist();status(found?`${found} donnée(s) récupérée(s) via ${lastMethod}. Vérifie et complète les champs signalés.`:'Aucune donnée fiable extraite. Ouvre l’annonce dans Safari et utilise le raccourci, ou colle son texte.',!found);
+ $('property-panel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function call(path,data){const resp=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const res=await resp.json().catch(()=>({}));if(!resp.ok)throw new Error(typeof res.detail==='string'?res.detail:`Erreur ${resp.status}`);return res;}
+$('import-form').addEventListener('submit',async e=>{e.preventDefault();const url=$('ad-url').value.trim();if(!url)return;status('Lecture de l’annonce en cours…');$('import-btn').disabled=true;
+ try{const result=await call('/api/import',{url});applyExtract(result);}
+ catch(err){status('Import indisponible : '+err.message+'. Utilise le mode Safari ou colle le texte.',true);}finally{$('import-btn').disabled=false;}});
+$('parse-text').addEventListener('click',async()=>{const text=$('pasted-text').value;if(!text.trim()){status('Colle le texte de l’annonce.',true);return;}try{applyExtract(await call('/api/text',{text,url:$('ad-url').value}));}catch(err){status(err.message,true);}});
+$('parse-screenshots').addEventListener('click',async()=>{const files=Array.from($('screenshots').files||[]);if(!files.length||files.length>6){status('Sélectionne de 1 à 6 captures.',true);return;}
+ try{const images=await Promise.all(files.map(file=>new Promise((resolve,reject)=>{if(file.size>4_000_000)return reject(Error('Capture de plus de 4 Mo.'));const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Lecture du fichier impossible.'));reader.readAsDataURL(file);})));status('Lecture OCR des captures…');const data=await call('/api/ocr',{images});if(data.raw_text)$('pasted-text').value=data.raw_text;applyExtract(data);}catch(err){status('OCR indisponible : '+err.message,true);}});
+function capturePage(){const meta=(name)=>{const el=document.querySelector('meta[property="'+name+'"],meta[name="'+name+'"]');return el?el.content:'';};
+ const jsonLd=[];for(const el of document.querySelectorAll('script[type="application/ld+json"]')){try{let x=JSON.parse(el.textContent);if(JSON.stringify(x).length<4000)jsonLd.push(x);}catch(e){}if(jsonLd.length>=3)break;}
+ return {url:location.href,title:meta('og:title')||document.title,text:[meta('og:description'),meta('description'),(document.body&&document.body.innerText||'').slice(0,7500)].join('\n'),ld:jsonLd};}
+function baseUrl(){return location.origin==='null'?'https://TON-SITE-ICI.example/':location.origin+'/';}
+function bookmarklet(){const base=JSON.stringify(baseUrl());return 'javascript:(function(){try{var p=('+capturePage.toString()+')();location.href='+base+'+"#import="+encodeURIComponent(JSON.stringify(p));}catch(e){alert("Extraction impossible : "+e.message)}})();';}
+function shortcutScript(){return '// Action Raccourcis : « Exécuter JavaScript sur une page web »\n// Puis action : « Ouvrir les URL » avec le résultat de cette action.\nvar capture=('+capturePage.toString()+')();\ncompletion('+JSON.stringify(baseUrl())+'+"#import="+encodeURIComponent(JSON.stringify(capture)));';}
+async function copy(text){try{await navigator.clipboard.writeText(text);}catch(err){const a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}}
+$('copy-bookmarklet').addEventListener('click',async()=>{if(location.protocol==='file:'||location.origin==='null'){status('Publie d’abord l’application sur une adresse HTTPS : le raccourci doit connaître son URL publique.',true);return;}await copy(bookmarklet());status('Code du signet copié. Dans Safari, crée un favori, modifie son adresse et colle ce code à la place.');});
+$('copy-shortcut').addEventListener('click',async()=>{if(location.protocol==='file:'||location.origin==='null'){status('Publie d’abord l’application sur une adresse HTTPS : le raccourci doit connaître son URL publique.',true);return;}await copy(shortcutScript());status('Script copié. Dans Raccourcis, ajoute « Exécuter JavaScript sur une page web », colle le script, puis « Ouvrir les URL ». Active l’affichage dans la feuille de partage.');});
+function getHistory(){try{return JSON.parse(localStorage.getItem(HKEY)||'[]');}catch(e){return [];}}
+function drawHistory(){const h=getHistory();$('history').innerHTML=h.length?h.map((item,i)=>`<div class="history-row"><div><strong>${esc(item.name)}</strong><small>${esc(item.date)} · ${esc(money(item.values.price))} · ${esc(item.values.surface||'—')} m²</small></div><div><span class="cash">${esc(item.cash===null?'—':money(item.cash))}</span><button type="button" data-load="${i}">Ouvrir</button></div></div>`).join(''):'<p class="support-hint">Aucune analyse enregistrée sur cet appareil.</p>'; $('history').querySelectorAll('[data-load]').forEach(b=>b.addEventListener('click',()=>{const item=h[Number(b.dataset.load)];values={...DEFAULTS,...item.values};evidence=item.evidence||{};sourceUrl=item.sourceUrl||'';fields();render();persist();$('property-panel').scrollIntoView({behavior:'smooth'});}));}
+$('save-analysis').addEventListener('click',()=>{const c=calculate(values);const h=getHistory();h.unshift({name:values.city||'Bien sans ville',date:new Date().toLocaleDateString('fr-FR'),values:{...values},evidence,sourceUrl,cash:values.price&&values.rent_monthly?c.cf:null});try{localStorage.setItem(HKEY,JSON.stringify(h.slice(0,25)));drawHistory();status('Analyse enregistrée dans ce navigateur.');window.scrollTo({top:0,behavior:'smooth'});}catch(e){status('Stockage local indisponible.',true);}});
+$('clear-history').addEventListener('click',()=>{if(confirm('Effacer toutes les analyses sauvegardées sur cet appareil ?')){localStorage.removeItem(HKEY);drawHistory();}});
+$('download-json').addEventListener('click',()=>{const payload={exportedAt:new Date().toISOString(),sourceUrl,values,evidence,calculation:calculate(values)};const b=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='analyse_immobiliere_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+$('print-report').addEventListener('click',()=>window.print());
+async function applyHash(){const hash=location.hash; if(!hash.startsWith('#import='))return;
+ history.replaceState(null,'',location.pathname+location.search);try{const data=JSON.parse(decodeURIComponent(hash.slice(8)));if(data.url){$('ad-url').value=data.url;sourceUrl=data.url;}
+  if(data.text){status('Page Safari reçue. Extraction des informations…');const response=await call('/api/capture',{title:data.title||'',text:data.text.slice(0,30000),ld:(data.ld||[]).slice(0,4),url:data.url||''});
+    // Données structurées via navigateur : seules les valeurs extraites déjà détectées seront conservées.
+    applyExtract(response);
+  }else if(data.fields)applyExtract({fields:data.fields,evidence:data.evidence||{},source_url:data.url||'',method:'Safari'});
+ }catch(e){status('Import du raccourci Safari incomplet : '+e.message,true);}}
+fields();drawHistory();render();applyHash();
+
+</script>
+</body>
+</html>
