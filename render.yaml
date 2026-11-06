@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: analyseur-rentabilite-immo
+    runtime: docker
+    region: frankfurt
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: USE_JINA
+        value: '1'
+      - key: APP_ACCESS_KEY
+        generateValue: true
